@@ -1,0 +1,129 @@
+.order-form {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin: 20px;
+    width: auto;
+}
+
+.item-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.item-row label, .item-row img {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.product-image {
+    max-width: 60px;
+    height: auto;
+    border-radius: 8px;
+    margin-left: 0px;
+}
+
+.order-form input, .order-form select {
+    padding: 12px;
+    margin-top: 5px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    width: calc(100% - 18px);
+    margin-bottom: 15px;
+}
+
+.order-form button {
+    padding: 10px 15px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: #0056b3;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+.order-form button:hover {
+    background-color: #003d7a;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.order-products-fields{
+    margin-top: 10px;
+}
+
+.add-item-button {
+    flex-grow: 1;
+    margin: 0 10px;
+    padding: 10px 15px;
+    font-size: 16px;
+    color: white;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.save-order-button {
+    flex-grow: 1;
+    margin: 0 10px;
+    padding: 10px 15px;
+    font-size: 16px;
+    color: white;
+    background-color: #28a745 !important;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.add-item-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.save-order-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.order-form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: relative;
+}
+
+h2 {
+    margin: 0;
+    padding: 20px 0;
+    flex-grow: 1;
+}
+
+.close-button {
+    font-size: 24px;
+    color: #ff6347;
+    border: none;
+    background: none;
+    margin: auto;
+}
+
+.close-button:hover {
+    color: #d83020;
+}
+
+
+

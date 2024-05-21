@@ -1,0 +1,9 @@
+.product-item:hover {
+    background-color: #f8f8f8;
+}
+
+.product-item img {
+    width: 100px;
+    height: auto; 
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
