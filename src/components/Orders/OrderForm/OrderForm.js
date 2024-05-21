@@ -81,7 +81,7 @@ const OrderForm = ({
                     <input
                         type="number"
                         value={item.quantity}
-                        onChange={(e) => handleItemChange(index, 'quantity', e.target.value)}
+                        onChange={(e) => handleItemChange(index, 'quantity', parseInt(e.target.value))}
                         min="1"
                         disabled={isView}
                     />
@@ -113,7 +113,7 @@ const OrderForm = ({
     return (
         <form className='order-form' onSubmit={handleSubmit}>
             <div className="order-form-header">
-                <h2>Create Order</h2>
+                <h2>{isView ? 'View Order' : 'Create Order'}</h2>
                 <button type='button' onClick={closeModel} className="close-button">X</button>
             </div>
             
@@ -138,6 +138,14 @@ const OrderForm = ({
             </label>
             
             {formData.items.length !== 0 && <div className='order-products-fields'>{renderOrderItems()}</div>}
+
+            { isView && (
+                <div className='order-product-total-price'>
+                    <h2>
+                        Total Price: {order?.total_price} $
+                    </h2>
+                </div>
+            )}
 
             {!isView && (
                 <div>

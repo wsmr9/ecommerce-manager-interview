@@ -125,5 +125,8 @@ h2 {
     color: #d83020;
 }
 
+.order-product-total-price h2 {
+    padding: 0px !important;
+}
 
 
