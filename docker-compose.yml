@@ -1,0 +1,22 @@
+# Using version 3.8 of Docker Compose, which supports modern features and fits well with most projects
+version: '3.8'
+
+# Define the services that make up our application. In this case, we have a single service named 'react-app'.
+services:
+  react-app:
+    # Configuration for building the container image
+    build:
+      context: .  # Build context, the current directory, where Docker looks for all necessary files
+      dockerfile: Dockerfile  # Specifies the Dockerfile to use for building the image
+
+    # Port mapping: Maps port 80 of the container to port 80 of the host machine
+    # This allows the application to be accessed from the browser using the host's port 80
+    ports:
+      - "80:80"
+
+    # Environment variables: Set NODE_ENV as 'production' to optimize the React application for production
+    environment:
+      - NODE_ENV=production
+
+    # Restart policy: Configures the service to automatically restart unless manually stopped
+    restart: unless-stopped
