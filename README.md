@@ -14,8 +14,8 @@ This guide will walk you through the setup and installation process for the Reac
 Clone the project repository and navigate into the directory:
 
 ```bash
-    git clone [URL of the repository]
-    cd [repository-name]
+    git https://github.com/wsmr9/ecommerce-manager-interview.git
+    cd ecommerce-manager-interview
 ```
 
 ### Step 2: Set Up Environment Variables
@@ -44,7 +44,7 @@ Verifying the Installation
 To verify that your frontend is set up correctly, navigate to the following URL.
 
 ```bash
-    http://localhost
+    http://localhost:3000
 ```
 
 Troubleshooting
