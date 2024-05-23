@@ -3,26 +3,26 @@ version: 0.2
 phases:
   install:
     commands:
-      - echo Installing source NPM dependencies...
-      - npm install
+      - echo Installing source NPM dependencies...  # Logs a message indicating the start of NPM package installation.
+      - npm install # Installs all dependencies listed in the project's package.json file. This is crucial for the build to have all necessary Node modules.
   pre_build:
     commands:
-      - echo Preparing to build...
+      - echo Preparing to build...  # Logs a message indicating the preparation steps before the actual build process starts.
   build:
     commands:
-      - echo Building the React app...
-      - npm run build
+      - echo Building the React app...  # Logs a message indicating the start of the React application build process.
+      - npm run build  # Runs the build script defined in package.json to compile the React application into static files for production.
   post_build:
     commands:
-      - echo Deploying to S3 bucket...
-      - aws s3 sync build/ s3://ecommerce-platform-interview --delete
+      - echo Deploying to S3 bucket... # Logs a message indicating the start of the deployment process to an AWS S3 bucket.
+      - aws s3 sync build/ s3://ecommerce-platform-interview --delete  # Syncs the built files to the specified S3 bucket, deleting any files in the bucket that are not present in the local build directory.
 
 artifacts:
   files:
-    - '**/*'
-  base-directory: build
-  discard-paths: yes
+    - '**/*'  # Specifies that all files and directories within the build directory are to be included as build artifacts.
+  base-directory: build  # Sets the base directory to 'build', which is the output directory of the React build process.
+  discard-paths: yes  # Discards the directory structure in the artifact output, simplifying the artifact structure.
 
 cache:
   paths:
-    - 'node_modules/**/*'
+    - 'node_modules/**/*' # Caches the node_modules directory to speed up subsequent builds by reusing the already installed Node modules.
