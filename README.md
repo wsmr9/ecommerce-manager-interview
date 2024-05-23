@@ -1,70 +1,66 @@
-# Getting Started with Create React App
+# ReactJs Frontend Setup Guide
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This guide will walk you through the setup and installation process for the ReactJs Frontend project. Please follow the steps outlined below to ensure the application is configured and running correctly.
 
-## Available Scripts
+## Prerequisites
 
-In the project directory, you can run:
+- Docker and Docker Compose should be installed on your machine.
+- Node.js should be installed if you plan to run the server locally without Docker.
 
-### `npm start`
+## Installation Steps
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Step 1: Clone the Repository
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Clone the project repository and navigate into the directory:
 
-### `npm test`
+```bash
+    git clone [URL of the repository]
+    cd [repository-name]
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Step 2: Set Up Environment Variables
 
-### `npm run build`
+Copy the `.env.example` file to create a `.env` file. This file will store all your environment-specific settings.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+    cp .env.example .env
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Open the `.env` file and make any necessary changes to fit your local development environment, but you can leave it as it is.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+### Step 3: Launch Docker Containers
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Use Docker Compose to launch the services defined in your `docker-compose.yml`:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+    docker-compose up -d
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Verifying the Installation
+--------------------------
 
-## Learn More
+To verify that your frontend is set up correctly, navigate to the following URL.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+    http://localhost
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Troubleshooting
+---------------
 
-### Code Splitting
+If you encounter any problems, check the following:
+- Ensure that all environment variables in the `.env` file are set correctly.
+- Check the Docker container logs for any error messages:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
+    docker logs [container-name]
+```
 
-### Analyzing the Bundle Size
+If issues persist, consider restarting the Docker containers or reinitializing the database.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Additional Help
+---------------
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+For additional help or to report issues, please create an issue in the project's GitHub repository or contact the project maintainers directly.
