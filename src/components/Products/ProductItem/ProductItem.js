@@ -1,13 +1,13 @@
 import React from "react";
-import './ProductItem.css'
+import './ProductItem.css'; // Import CSS for styling.
 
 const ProductItem = ({ product }) => {
-
     return (
+        // Corrected the structure by using <td> for the image cell.
         <tr className="product-item">
-            <tr>
-                <img src={product.image} />
-            </tr>
+            <td>
+                <img src={product.image} alt={product.name} />
+            </td>
             <td>{product.id}</td>
             <td>{product.name}</td>
             <td>{product.description}</td>
@@ -17,5 +17,4 @@ const ProductItem = ({ product }) => {
     );
 }
 
-export default ProductItem
-
+export default ProductItem; // Export the component for use in other parts of the application.

@@ -1,49 +1,49 @@
 .main-header {
-    background-color: #007bff; /* Color uniforme para el header */
+    background-color: #007bff;
     color: white;
-    padding: 20px; /* Más padding para mejor visualización */
+    padding: 20px;
     text-align: center;
-    font-size: 24px; /* Tamaño de fuente adecuado para el título */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra para dar profundidad */
+    font-size: 24px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .main-header nav {
-    display: flex; /* Flex para mejor alineación de los links */
-    justify-content: center; /* Centra los enlaces */
-    margin-top: 10px; /* Espacio sobre la navegación */
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
 }
 
 .header-link {
     color: white;
     text-decoration: none;
-    padding: 10px 15px; /* Padding más generoso para facilidad de clic */
-    margin: 0 10px; /* Espaciado entre enlaces */
-    transition: background-color 0.3s, color 0.3s; /* Transiciones suaves */
+    padding: 10px 15px;
+    margin: 0 10px;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .header-link.active {
-    background-color: #0056b3; /* Color más oscuro para la pestaña activa */
-    border-radius: 5px; /* Bordes redondeados para las pestañas activas */
+    background-color: #0056b3;
+    border-radius: 5px;
 }
 
 .header-link:hover {
-    text-decoration: none; /* No subrayado al pasar el mouse */
-    background-color: #004785; /* Color más oscuro al pasar el mouse */
+    text-decoration: none;
+    background-color: #004785;
     color: #ffffff;
 }
 
 .logout-button {
     padding: 8px 16px;
-    background-color: #dc3545; /* Rojo para el botón de cierre de sesión */
+    background-color: #dc3545;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
-    margin-left: 20px; /* Espacio desde el último enlace */
+    margin-left: 20px;
     transition: background-color 0.3s;
 }
 
 .logout-button:hover {
-    background-color: #c82333; /* Rojo más oscuro al pasar el mouse */
+    background-color: #c82333;
 }

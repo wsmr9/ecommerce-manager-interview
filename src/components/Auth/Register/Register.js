@@ -1,38 +1,40 @@
 import React, {useState} from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import {  createUserWithEmailAndPassword  } from 'firebase/auth';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../../firebase/firebase';
-import './Register.css'
- 
+import ErrorBanner from '../../Layout/ErrorBanner/ErrorBanner';
+import './Register.css';
+
 const Register = () => {
-    const navigate = useNavigate();
- 
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('');
- 
+    const navigate = useNavigate(); // Hook to programmatically navigate between routes.
+    const [email, setEmail] = useState(''); // State to store the user's email.
+    const [password, setPassword] = useState(''); // State to store the user's password.
+
+    const [isError , setIsError] = useState(false)
+    const [messageError, setMessageError] = useState(null)
+
     const onSubmit = async (e) => {
-      e.preventDefault()
-     
-      await createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            // Signed in
-            const user = userCredential.user;
-            console.log(user);
-            navigate("/products")
-            // ...
-        })
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.log(errorCode, errorMessage);
-            // ..
-        });
- 
-   
+        e.preventDefault(); // Prevents the default form submission behavior.
+        setIsError(false)
+        setMessageError(null)
+        await createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                // On successful registration
+                const user = userCredential.user; // User object for the newly created user.
+                console.log(user); // Log user data for debugging purposes.
+                navigate("/products"); // Navigate to the products page after successful registration.
+            })
+            .catch((error) => {
+                setIsError(true)
+                const errorCode = error.code;  // Firebase error code.
+                const errorMessage = error.message;  // Firebase error message.
+                setMessageError(errorMessage)
+                console.log(errorCode, errorMessage);  // Log errors for debugging purposes.
+            });
     }
- 
-  return (
-    <div className="register-container">
+
+    return (
+        <div className="register-container">
             <form onSubmit={onSubmit} className="register-form">
                 <h1>Sign Up</h1>
                 <input
@@ -48,10 +50,11 @@ const Register = () => {
                     onChange={(e) => setPassword(e.target.value)}
                 />
                 <button type="submit">Sign up</button>
+                {isError && <ErrorBanner error={messageError} />}
                 <NavLink to="/login">Already have an account? Sign in</NavLink>
             </form>
-    </div>
-  )
+        </div>
+    )
 }
- 
-export default Register
+
+export default Register; // Export the component for use in other parts of the application.

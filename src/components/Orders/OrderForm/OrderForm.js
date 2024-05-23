@@ -11,28 +11,29 @@ const OrderForm = ({
         closeModel
     }) => {
 
-    const { currentUser } = useAuth();
+    const { currentUser } = useAuth(); // Use authentication context to get the current user.
 
-    // Estado inicial del formulario
+    // Initialize form state with either existing order data or defaults.
     const [formData, setFormData] = useState({
-        customer_id: order ? order.customer_id : currentUser?.uid ,
-        status: order ? order.status : 'pending',
-        items: order ? order.items : []
+        customer_id: order ? order.customer_id : currentUser?.uid, // Use order customer ID or current user ID.
+        status: order ? order.status : 'pending', // Default status is 'pending'.
+        items: order ? order.items : [] // Start with items in the order or an empty array.
     });
 
-    // Maneja los cambios en los campos del formulario
+
+    // Handle input changes for the form and individual items.
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
 
-    // Añade un nuevo item de orden
+    // Add a new item to the order.
     const addOrderItem = () => {
         const newItems = [...formData.items, { product_id: '', quantity: 1 }];
         setFormData({ ...formData, items: newItems });
     };
 
-    // Actualiza los items de la orden
+    // Update details of a specific item in the order.
     const handleItemChange = (index, field, value) => {
         const newItems = formData.items.map((item, i) => {
             if (index === i) {
@@ -55,6 +56,7 @@ const OrderForm = ({
         setFormData({ ...formData, items: newItems });
     };
 
+    // Render form fields for each item in the order.
     const renderOrderItems = () => {
         return formData.items.map((item, index) => (
             <div key={index} className="item-row">
@@ -92,13 +94,13 @@ const OrderForm = ({
         ));
     };
     
-
- 
+    // Submit the form data.
     const handleSubmit = (e) => {
         e.preventDefault();
         onSave(formData);
     };
 
+    // Check if the save button should be disabled.
     const isDisabledToSave = () => {
         if (formData.items.length === 0) return true;
         const hasInvalidProductId = formData.items.some(item => 

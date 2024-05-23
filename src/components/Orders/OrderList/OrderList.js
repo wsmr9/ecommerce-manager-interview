@@ -1,34 +1,16 @@
 import React , { useState,  useEffect } from "react";
-import Modal from 'react-modal';
+import ModalCustom from "../../Layout/Modal/Modal";
 
 import OrderItem from "../OrderItem/OrderItem";
 import OrderForm from "../OrderForm/OrderForm";
 import Loading from "../../Layout/Loading/Loading";
+import ErrorBanner from '../../Layout/ErrorBanner/ErrorBanner';
 
 import useHttp from "../../../hook/useHttp";
 
 import config from "../../../config/config";
 
 import './OrderList.css'
-
-const customStyles = {
-    content: {
-        top: '50%',
-        left: '50%',
-        right: 'auto',
-        bottom: 'auto',
-        marginRight: '-50%',
-        transform: 'translate(-50%, -50%)',
-        width: 'auto',
-        maxHeight: '90vh',
-        overflow: 'auto',
-        border: 'none'
-    },
-    overlay: {
-        backgroundColor: 'rgba(0, 0, 0, 0.75)'
-    }
-};
-
 
 const OrderList = () => {
 
@@ -41,58 +23,44 @@ const OrderList = () => {
     const [selectedOrder, setSelectedOrder] = useState(null);
     const [isView, setIsView] = useState(false)
 
+    // Fetch product data from the configured endpoint.
     const fetchProductData = async () => {
-        const data = await sendRequest(`${config.productsEndpoint}/products`);
-        setProducts(data)
+        try {
+            const data = await sendRequest(`${config.productsEndpoint}/products`);
+            setProducts(data)
+        } catch (error) { console.log(error)}
     }
 
-    const processOrderData = ( data ) => {
-
-        // const orderJoinProductData = Object.values(data).map( order => {
-
-        //     order['products'] = Objet.values(order.items).map( orderItem => {
-                
-        //         product_info = products.find( product => product.id == orderItem.product_id )
-
-        //         return {
-        //             ...orderItem,
-        //             'product_indo' : product_info
-        //         }
-        //     })
-
-        //     return {
-        //         ...order,
-        //     }
-
-        // })
-
-        // setOrders(orderJoinProductData)
-
-        setOrders(data)
-
-    }
-
+    // Fetch order data from the configured endpoint.
     const fetchOrderData = async () => {
-        const data = await sendRequest(`${config.ordersEndpoint}/orders`);
-        //processOrderData(data["orders"])
-        setOrders(data["orders"])
+        try {
+            const data = await sendRequest(`${config.ordersEndpoint}/orders`);
+            setOrders(data["orders"])
+        } catch (error) { console.log(error)}
     }
 
+    // Function to handle the creation of a new order.
     const createOrderRequest = async ( orderData ) => {
-        const data = await sendRequest(`${config.ordersEndpoint}/orders` , 'POST', orderData, {
-            'Content-Type': 'application/json'
-        });
+        try {
+            const data = await sendRequest(`${config.ordersEndpoint}/orders` , 'POST', orderData, {
+                'Content-Type': 'application/json'
+            });
+            console.log(data)
+        } catch (error) { console.log(error)}
     }
 
+    // Fetch product data on component mount.
     useEffect(() => {
         fetchProductData()
     },[])
 
+    // Fetch order data once products are loaded.
     useEffect(() => {
         if (!products) return 
         fetchOrderData()
     },[products])
 
+     // Functions to handle modal open and close.
     const openModal = (order = null, isView = false ) => {
         setIsView(isView)
         setSelectedOrder(order);
@@ -104,11 +72,13 @@ const OrderList = () => {
         setSelectedOrder(null);
     };
 
+    // Handle saving of an order and then re-fetch product data.
     const handleSaveOrder = (orderData) => {
         console.log(orderData);
         createOrderRequest(orderData).then(() => closeModal()).then(() => fetchProductData())
     };
 
+    // Render order data into OrderItem components.
     const renderedOrderData = orders.map((order) => (
         <OrderItem 
             key={order.id}
@@ -121,15 +91,16 @@ const OrderList = () => {
         <div className="order-list-container">
             { isLoading && <Loading /> }
             <button className="create-btn" onClick={() => openModal()}>Create New Order</button>
+            {error && <ErrorBanner error={error} />}
             <table className="order-list-table">
                 <thead>
                     <tr>
-                        <th>Order Id</th>
-                        <th>Customer Id</th>
-                        <th>Status</th>
-                        <th>Total Price</th>
-                        <th>Created At</th>
-                        <th>Actions</th>
+                        <th>ORDER ID</th>
+                        <th>CUSTOMER ID</th>
+                        <th>STATUS</th>
+                        <th>TOTAL PRICE</th>
+                        <th>CREATED AT</th>
+                        <th>ACTIONS</th>
                     </tr>
                 </thead>
 
@@ -137,14 +108,14 @@ const OrderList = () => {
                     {renderedOrderData}
                 </tbody>
 
-                <div>
-                { Object.values(orders).length === 0 &&<div className="no-orders">No Orders Listed</div>}
-                </div>
+                
             </table>
-            <Modal
+            
+            { Object.values(orders).length === 0 &&<div className="no-orders">No Orders Have Been Registered </div>}
+            
+            <ModalCustom
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}
-                style={customStyles}
             >
                 <OrderForm 
                     order={selectedOrder} 
@@ -153,7 +124,7 @@ const OrderList = () => {
                     isView={isView}
                     closeModel={closeModal}
                 />
-            </Modal>
+            </ModalCustom>
         </div>
     )
 }

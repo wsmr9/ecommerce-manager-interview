@@ -1,10 +1,9 @@
 import React from "react";
+import './OrderItem.css'  // Import CSS for styling the order item.
 
-import './OrderItem.css'
-
-const OrderItem = ({order, onView}) => {
-
+const OrderItem = ({ order, onView }) => {
     return (
+        // Table row for each order item.
         <tr className="order-item">
             <td>{order.id}</td>
             <td>{order.customer_id}</td>
@@ -18,4 +17,4 @@ const OrderItem = ({order, onView}) => {
     );
 }
 
-export default OrderItem
+export default OrderItem;  // Export the OrderItem component for use in other parts of the application.

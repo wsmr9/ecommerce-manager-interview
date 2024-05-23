@@ -1,0 +1,12 @@
+.error-banner {
+    color: #963d3d; /* More subdued red text */
+    background-color: #ffeded; /* Very light red background */
+    border-left: 5px solid #ffcccc; /* Solid left border for a touch of style */
+    padding: 8px 20px; /* Reduced padding */
+    margin: 10px 0; /* Reduced margin */
+    border-radius: 4px; /* Subtle rounding of corners */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1); /* Light shadow for depth */
+    text-align: center;
+    font-size: 14px; /* Smaller font size for less intrusion */
+    font-family: 'Arial', sans-serif;
+}

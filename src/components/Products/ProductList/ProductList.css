@@ -2,35 +2,48 @@
     padding: 20px;
     background: #fff;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    border-radius: 8px; /* Bordes redondeados para el contenedor */
+    border-radius: 8px;
     margin: 20px;
-    overflow: hidden; /* Oculta cualquier desbordamiento */
+    overflow: hidden;
 }
 
 .product-list-table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: #fff;
+    width: 100%; /* Make the table use the full width of its container */
+    table-layout: fixed; /* This helps in applying fixed widths to your columns */
+    border-collapse: collapse; /* Optional: for styling, to make borders between rows and columns collapse into a single border */
 }
 
 .product-list-table thead th {
-    background-color: #007bff; /* Color de fondo para los encabezados */
+    background-color: #007bff;
     color: white;
-    padding: 15px; /* Mayor padding para un mejor aspecto */
+    padding: 15px;
     text-align: left;
-    border-bottom: 2px solid #0056b3; /* Borde más oscuro para definir mejor los encabezados */
+    border-bottom: 2px solid #0056b3;
+    padding: 8px; /* Provides padding within cells */
+    text-align: left; /* Aligns text to the left */
+    overflow: hidden; /* Prevents content from overflowing */
+    text-overflow: ellipsis; /* Adds ellipsis (...) when content overflows */
+    white-space: nowrap; /* Keeps the content on a single line */
 }
 
+/* Specific width adjustments for each column */
+.product-list-table th:nth-child(1), .product-list-table td:nth-child(1) { width: 15%; } /* Image */
+.product-list-table th:nth-child(2), .product-list-table td:nth-child(2) { width: 10%; } /* Product ID */
+.product-list-table th:nth-child(3), .product-list-table td:nth-child(3) { width: 10%; } /* Name */
+.product-list-table th:nth-child(4), .product-list-table td:nth-child(4) { width: 45%; } /* Description */
+.product-list-table th:nth-child(5), .product-list-table td:nth-child(5) { width: 10%; } /* Price */
+.product-list-table th:nth-child(6), .product-list-table td:nth-child(6) { width: 10%; } /* Created At */
+
+
 .product-list-table td, .product-list-table th {
-    padding: 12px; /* Uniformidad en el padding */
+    padding: 12px;
     border-bottom: 1px solid #ddd;
 }
 
 .product-list-table tr:hover {
-    background-color: #f8f9fa; /* Resalta la fila al pasar el mouse */
+    background-color: #f8f9fa;
 }
 
-/* Estilos para botones dentro de la tabla */
 button {
     padding: 8px 16px;
     border: none;
@@ -43,7 +56,7 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3; /* Efecto hover para botones */
+    background-color: #0056b3;
 }
 
 .edit-btn {
@@ -63,7 +76,7 @@ button:hover {
 }
 
 .add-new-btn {
-    background-color: #4CAF50; /* Color uniforme para botones de añadir */
+    background-color: #4CAF50;
     color: white;
     padding: 10px 20px;
     font-size: 16px;
@@ -73,5 +86,16 @@ button:hover {
 }
 
 .add-new-btn:hover {
-    background-color: #45A049; /* Efecto hover más oscuro */
+    background-color: #45A049;
+}
+
+.no-products {
+    padding: 20px;
+    text-align: center;
+    background-color: #f8f9fa;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    color: #6c757d;
+    font-size: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }

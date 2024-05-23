@@ -1,10 +1,10 @@
 .order-list-container {
     padding: 20px;
-    background: #fff; /* Fondo blanco para la tabla y su contenedor */
+    background: #fff;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    border-radius: 8px; /* Bordes redondeados para el contenedor */
+    border-radius: 8px;
     margin: 20px;
-    overflow: hidden; /* Oculta cualquier desbordamiento */
+    overflow: hidden;
 }
 
 .order-list-table {
@@ -14,15 +14,15 @@
 }
 
 .order-list-table thead th {
-    background-color: #007bff; /* Color de fondo para los encabezados */
+    background-color: #007bff;
     color: white;
-    padding: 15px; /* Mayor padding para un mejor aspecto */
+    padding: 15px;
     text-align: left;
-    border-bottom: 2px solid #0056b3; /* Borde más oscuro para definir mejor los encabezados */
+    border-bottom: 2px solid #0056b3;
 }
 
 .order-list-table td, .order-list-table th {
-    padding: 12px; /* Uniformidad en el padding */
+    padding: 12px;
     border-bottom: 1px solid #ddd;
 }
 
@@ -31,10 +31,9 @@
 }
 
 .order-list-table tr:hover {
-    background-color: #f8f9fa; /* Resalta la fila al pasar el mouse */
+    background-color: #f8f9fa;
 }
 
-/* Estilos para botones dentro de la tabla */
 button {
     padding: 8px 16px;
     border: none;
@@ -47,7 +46,7 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3; /* Efecto hover para botones */
+    background-color: #0056b3;
 }
 
 .create-btn, .add-new-btn {
@@ -62,7 +61,7 @@ button:hover {
 }
 
 .create-btn:hover, .add-new-btn:hover {
-    background-color: #226c2a; /* Efecto hover más oscuro */
+    background-color: #226c2a;
 }
 
 .no-orders {
@@ -70,7 +69,7 @@ button:hover {
     text-align: center;
     background-color: #f8f9fa;
     border: 1px solid #ccc;
-    border-radius: 8px;
+    border-radius: 2px;
     color: #6c757d;
     font-size: 16px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
